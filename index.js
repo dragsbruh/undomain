@@ -154,7 +154,7 @@ app.put("/api/update", function (req, res) {
 });
 
 app.get("/api/fetch", function (req, res) {
-	if (req.body.alias == undefined) {
+	if (req.query.alias == undefined) {
 		res.status(400);
 		res.json({
 			status: "error",
@@ -163,12 +163,12 @@ app.get("/api/fetch", function (req, res) {
 	} else {
 		let result;
 		try {
-			result = fetchAlias(req.body.alias);
+			result = fetchAlias(req.query.alias);
 			res.status(200);
 			res.json({
 				status: "success",
 				data: {
-					alias: req.body.alias,
+					alias: req.query.alias,
 					value: result,
 				},
 			});
