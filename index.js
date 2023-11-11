@@ -12,6 +12,10 @@ var deleteAlias;
 var updateAlias;
 var fetchAlias;
 
+if (!process.env.PORT) {
+	throw new Error("Enter a valid port");
+}
+
 if (process.env.PERSISTENT === "1") {
 	const API = process.env.API;
 	const API_KEY = process.env.API_KEY;
@@ -180,4 +184,4 @@ app.get("/api/fetch", function (req, res) {
 	res.send();
 });
 
-app.listen(80);
+app.listen(process.env.PORT);
